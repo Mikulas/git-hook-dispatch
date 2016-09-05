@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+export HOOK_NAME="{{HOOK_NAME}}"
+source "$(dirname "$DIR")/proxy.sh"

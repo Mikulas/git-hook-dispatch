@@ -1,0 +1,21 @@
+= Git hook dispatch
+
+Adds support for multiple hook handlers in multiple locations.
+
+- `hooks/$HOOK_NAME.d/*`: global, this repo
+- `$GIT_DIR/hooks/$HOOK_NAME.d/*`: repo specific, directory for each hook
+- `$GIT_DIR/hooks/$HOOK_NAME`: default git path for back compatibility
+
+== Requirements
+
+- git ^2.9 which introduced `core.hooksPath`
+
+== Installation
+
+```
+make install
+```
+
+== Contributing
+
+Update `proxies/template` and run `make build`. Do not edit `hooks/` manually.
