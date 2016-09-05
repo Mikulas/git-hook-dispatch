@@ -5,10 +5,14 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 STDIN="$(cat)"
 
+# GIT_DIR is not set when git command is called from REPO_ROOT
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+REPO_ROOT="${GIT_DIR:-$REPO_ROOT}"
+
 for HANDLER in \
         "$DIR/hooks/$HOOK_NAME.d"/* \
-        "$GIT_DIR/hooks/$HOOK_NAME.d"/* \
-        "$GIT_DIR/hooks/$HOOK_NAME" \
+        "$REPO_ROOT/hooks/$HOOK_NAME.d"/* \
+        "$REPO_ROOT/hooks/$HOOK_NAME" \
 ; do
         if [[ ! -f "$HANDLER" ]]; then
                 continue

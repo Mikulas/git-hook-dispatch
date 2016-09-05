@@ -27,5 +27,7 @@ for HOOK in \
 	mkdir -p "$HOOK_DIR"
 	touch "$HOOK_DIR/.gitkeep"
 
-	sed "s/{{HOOK_NAME}}/$HOOK/g" "$DIR/proxy-template" > "$DIR/proxies/$HOOK"
+	PROXY="$DIR/proxies/$HOOK"
+	sed "s/{{HOOK_NAME}}/$HOOK/g" "$DIR/proxy-template" > "$PROXY"
+	chmod a+x "$PROXY"
 done
