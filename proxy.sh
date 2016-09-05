@@ -3,7 +3,10 @@ set -euo pipefail
 IFS=$'\n\t'
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-STDIN="$(cat)"
+STDIN=""
+if [ ! -t 0 ]; then
+        STDIN="$(cat)"
+fi
 
 # GIT_DIR is not set when git command is called from REPO_ROOT
 REPO_ROOT="$(git rev-parse --show-toplevel)"
